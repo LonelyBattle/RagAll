@@ -1,31 +1,38 @@
 # ============================================================
 # RAG 学习项目依赖清单（requirements.txt）
-# 版本号 = 当前环境已确认可用 / PyPI 已确认发布 的版本，均用 == 精确锁定
 # 安装方式: pip install -r requirements.txt
+#
+# 版本策略：不写死精确版本（==），改用「下界 + 避开下一个大版本」的兼容区间。
+#   · 下界 = 本项目已确认可用的最低版本；
+#   · 上界 = 挡住未来可能破坏 API 的大版本；
+#   · 这样不同 Python 版本（3.10~3.12 等）安装时，pip 能各自挑到「有 wheel 可装」的版本，
+#     不会因为某个精确版本在目标 Python 上没 wheel 而卡住或被迫源码编译。
+# 需要完全复现某台已验证环境时，用 `pip freeze > requirements-lock.txt` 另存精确版本。
+# 建议 Python 版本：3.10 ~ 3.12（本项目在 3.12 上实测通过）。
 # ============================================================
 
 # ---- API / 配置 ----
 # 阿里百炼(DashScope)官方 SDK —— notebook 调用 qwen-plus 生成 / text-embedding-v3 向量 / gte-rerank 重排
-dashscope==1.27.4
+dashscope>=1.20,<2
 # 读取项目根目录 .env 中的 API Key（所有 notebook 统一用 load_dotenv()）
-python-dotenv==1.1.0
+python-dotenv>=1.0,<2
 
 # ---- 数值与向量 ----
 # 数组与向量运算、L2 归一化、相似度计算（01/07/11/12/13/15/32/35/38 等大量 notebook）
-numpy==2.4.6
+numpy>=1.26,<3
 # 向量索引/检索 —— FAISS Flat / IVF / HNSW（12/13 向量库与索引课）
-faiss-cpu==1.11.0
+faiss-cpu>=1.8,<2
 # 稀疏检索 BM25 / 倒排索引（15/16 稀疏与混合检索课）
-rank-bm25==0.2.2
+rank-bm25>=0.2.2
 # 图构建与图检索（26 GraphRAG 课）
-networkx==3.6.1
+networkx>=3.2,<4
 
 # ---- 文档解析 ----
 # PyMuPDF —— import fitz 用于 PDF 拆页/取文本/取图（05 解析课、29 多模态课）
-PyMuPDF==1.26.1
+PyMuPDF>=1.24,<2
 
 # ---- Jupyter 运行环境 ----
 # ipykernel 提供 Python 内核（VS Code / Jupyter 中运行本仓库 notebook 所需）
-ipykernel==7.3.0
+ipykernel>=6.29
 # 如需在命令行用 jupyter notebook / jupyter lab 启动，另装 jupyter（未安装于此环境，故不锁定）：
 # jupyter
