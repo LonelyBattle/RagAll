@@ -12,7 +12,7 @@
 # ============================================================
 
 # ---- API / 配置 ----
-# 阿里百炼(DashScope)官方 SDK —— notebook 调用 qwen-plus 生成 / text-embedding-v3 向量 / gte-rerank 重排
+# 阿里百炼(DashScope)官方 SDK —— notebook 调用 qwen-plus 生成 / text-embedding-v3 向量 / qwen3-rerank 重排
 dashscope>=1.20,<2
 # 读取项目根目录 .env 中的 API Key（所有 notebook 统一用 load_dotenv()）
 python-dotenv>=1.0,<2

@@ -1,0 +1,59 @@
+{
+  "knowledge_base": {
+    "kb_id": "kb_nebula_prod",
+    "name": "星云产品知识库",
+    "created_at": "2025-07-28T10:00:00+08:00",
+    "embedding_model": "text-embedding-v3",
+    "embedding_dim": 1024,
+    "chunking": { "chunk_size": 500, "overlap": 80 },
+    "retrieval": { "top_k": 5, "score_threshold": 0.35, "rerank": true }
+  },
+  "documents": [
+    {
+      "doc_id": "doc_001",
+      "title": "星云智能客服机器人产品手册",
+      "source": "星云智能产品手册.md",
+      "format": "markdown",
+      "chars": 2100,
+      "chunks": 8,
+      "status": "ready",
+      "updated_at": "2025-08-01T09:00:00+08:00",
+      "tags": ["产品", "对外"]
+    },
+    {
+      "doc_id": "doc_002",
+      "title": "计费与 SLA 说明",
+      "source": "计费与SLA.md",
+      "format": "markdown",
+      "chars": 1500,
+      "chunks": 6,
+      "status": "ready",
+      "updated_at": "2025-08-02T15:30:00+08:00",
+      "tags": ["商务", "对外"]
+    },
+    {
+      "doc_id": "doc_003",
+      "title": "部署与运维手册",
+      "source": "部署与运维手册.md",
+      "format": "markdown",
+      "chars": 1700,
+      "chunks": 7,
+      "status": "ready",
+      "updated_at": "2025-08-03T11:12:00+08:00",
+      "tags": ["运维", "内部"]
+    },
+    {
+      "doc_id": "doc_004",
+      "title": "旧版产品说明（已废弃）",
+      "source": "legacy_manual_v1.md",
+      "format": "markdown",
+      "chars": 900,
+      "chunks": 3,
+      "status": "failed",
+      "error": "doc_parse_failed: 文件已加密，无法提取文本",
+      "updated_at": "2025-06-11T08:20:00+08:00",
+      "tags": ["废弃"]
+    }
+  ],
+  "usage": { "documents": 4, "chunks": 24, "last_sync": "2025-08-03T11:12:30+08:00" }
+}

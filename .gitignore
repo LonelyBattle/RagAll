@@ -22,6 +22,10 @@ Thumbs.db
 # Jupyter
 .ipynb_checkpoints/
 
+# 向量缓存（.cache/emb.npz 是真实调用结果，故意入库 —— 没配 Key 也能读到真向量；
+# 只忽略多进程写盘时的临时文件）
+.cache/*.tmp.npz
+
 # RAG / Vector DB
 chroma/
 chroma_db/

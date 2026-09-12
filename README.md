@@ -53,7 +53,7 @@
 | 19 | [`19_multi_query.ipynb`](19_multi_query.ipynb) | Multi-Query / 并行检索 / 多查询融合 |
 | 20 | [`20_query_decomposition.ipynb`](20_query_decomposition.ipynb) | Query Decomposition / Sub-question 生成 / Parallel & Sequential Retrieval / Step-back Prompting |
 | 21 | [`21_rag_fusion.ipynb`](21_rag_fusion.ipynb) | RAG-Fusion 全流程 / Multi-query / RRF / Weighted RRF / Fusion 策略 |
-| 22 | [`22_rerank.ipynb`](22_rerank.ipynb) | 检索-重排-生成三段式 / Cross-Encoder / Bi-Encoder / Late Interaction / LLM Reranker / gte-rerank |
+| 22 | [`22_rerank.ipynb`](22_rerank.ipynb) | 检索-重排-生成三段式 / Cross-Encoder / Bi-Encoder / Late Interaction / LLM Reranker / qwen3-rerank |
 
 ### 模块 E：上下文工程 / 提示词 / 幻觉 / 引用
 
@@ -141,7 +141,7 @@ jupyter notebook
 |------|------|------|
 | 生成（LLM） | `qwen-plus` | 默认；可换 `qwen-max` / `qwen-turbo` / `qwen-long` |
 | 向量化 | `text-embedding-v3` | 1024 维；另有 v1/v2（1536 维） |
-| 重排序 | `gte-rerank` | 对召回结果精排 |
+| 重排序 | `qwen3-rerank` | 对召回结果精排；也可换 `gte-rerank-v2` |
 
 > 百炼还提供 **OpenAI 兼容接口**：`base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"`，可复用 `openai`/LangChain。
 
@@ -155,11 +155,24 @@ RagAll/
 ├── .env.example                 # API Key 配置模板（复制为 .env 使用）
 ├── .gitignore                   # 忽略 .env / __pycache__ 等
 ├── requirements.txt             # 依赖清单
-├── data/                        # 示例知识库（仅保留被 notebook 引用的文件）
-│   ├── 向量数据库.md            # ← 06 清洗流水线 / 07_chunking_basics 读取
-│   └── 星云智能产品手册.md      # ← 04_document_loading 读取
+├── .cache/                      # 向量缓存（真实调用的 embedding 落盘，重复运行不重复花 token）
+├── data/                        # 示例知识库：一套「星云智能客服」的仿真语料
+│   ├── 星云智能产品手册.md      #   产品/部署/计费/安全    ← 04 05 07 15 33 40 主干检索
+│   ├── 星云客服FAQ.md           #   一问一答式客服语料    ← 18 19 20 24 查询改写
+│   ├── 部署与运维手册.md        #   环境要求/升级/排障    ← 23 24 25 上下文工程
+│   ├── API文档.md               #   接口/鉴权/错误码      ← 31 32 SQL/代码 RAG
+│   ├── 计费与SLA.md             #   版本价格/服务等级      ← 22 重排
+│   ├── 故障排查.md              #   常见故障与处置        ← 26 29 幻觉与 CRAG
+│   ├── 向量数据库.md            #   索引类型/选型          ← 06 13 14
+│   ├── 评测集.md                #   人工标注（问题→相关文档/小节），不进检索索引 ← 33 34 40
+│   ├── 星云产品手册.pdf         #   由上面 md 生成的样例 PDF ← 05 PyMuPDF 真解析
+│   └── 样例工单.csv / 样例帮助中心.html / 样例知识库元数据.json   ← 04 多格式加载
 └── 01_llm_primer.ipynb … 40_production_rag.ipynb   # 40 个知识点 notebook
 ```
+
+> 除第 33/34/40 课的人工标注评测集外，各课的检索、重排、生成都跑在同一套真实语料上：
+> `data/` → 真切分 → 真 embedding（`text-embedding-v3`）→ 真索引（FAISS + BM25）→ 真重排（`qwen3-rerank`）→ 真生成（`qwen-plus`）。
+> 没配 `.env` 时也不影响阅读：向量从 `.cache/` 读（真实调用的结果），需要现场调用的部分会打印历史录制结果。
 
 ---
 
