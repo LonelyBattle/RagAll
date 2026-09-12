@@ -1,11 +1,11 @@
 # RAG 从入门到生产 —— 基于阿里百炼（DashScope）的 41 课实战教程
 
-本仓库用 **41 个 Jupyter Notebook** 系统覆盖 **RAG（Retrieval-Augmented Generation，检索增强生成）** 的完整知识树。
+本仓库用 41 个 Jupyter Notebook 系统覆盖 RAG（Retrieval-Augmented Generation，检索增强生成）的完整知识树。
 每个 notebook 对应一段知识模块：标题 + 中文讲解 + 密集注释的可运行代码，编号即推荐学习顺序。
 
-- 大模型能力（生成 / Embedding / Rerank / 分词）由 **阿里百炼（DashScope）** 提供；
-- API Key **统一通过 `.env` 文件配置**（仓库只提交 `.env.example`，不硬编码）；
-- 每个 notebook 第一段 markdown 都标注「**本文件覆盖知识点**」，与下方覆盖表一一对应。
+- 大模型能力（生成 / Embedding / Rerank / 分词）由阿里百炼（DashScope）提供；
+- API Key 统一通过 `.env` 文件配置（仓库只提交 `.env.example`，不硬编码）；
+- 每个 notebook 第一段 markdown 都标注“本文件覆盖知识点”，与下方覆盖表一一对应。
 
 ---
 
@@ -144,7 +144,7 @@ jupyter notebook
 | 向量化 | `text-embedding-v3` | 1024 维；另有 v1/v2（1536 维） |
 | 重排序 | `qwen3-rerank` | 对召回结果精排；也可换 `gte-rerank-v2` |
 
-> 百炼还提供 **OpenAI 兼容接口**：`base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"`，可复用 `openai`/LangChain。
+> 百炼还提供 OpenAI 兼容接口：`base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"`，可复用 `openai`/LangChain。
 
 ---
 
