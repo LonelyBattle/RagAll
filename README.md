@@ -1,6 +1,6 @@
-# RAG 从入门到生产 —— 基于阿里百炼（DashScope）的 40 课实战教程
+# RAG 从入门到生产 —— 基于阿里百炼（DashScope）的 41 课实战教程
 
-本仓库用 **40 个 Jupyter Notebook** 系统覆盖 **RAG（Retrieval-Augmented Generation，检索增强生成）** 的完整知识树。
+本仓库用 **41 个 Jupyter Notebook** 系统覆盖 **RAG（Retrieval-Augmented Generation，检索增强生成）** 的完整知识树。
 每个 notebook 对应一段知识模块：标题 + 中文讲解 + 密集注释的可运行代码，编号即推荐学习顺序。
 
 - 大模型能力（生成 / Embedding / Rerank / 分词）由 **阿里百炼（DashScope）** 提供；
@@ -79,19 +79,19 @@
 
 | # | 文件 | 覆盖知识点 |
 |---|------|-----------|
-| 33 | [`33_retrieval_evaluation.ipynb`](33_retrieval_evaluation.ipynb) | Recall / Precision / Hit Rate / Recall@K / Precision@K / MRR / NDCG / MAP |
-| 34 | [`34_generation_evaluation.ipynb`](34_generation_evaluation.ipynb) | Faithfulness / Answer Relevance / Context Relevance / LLM-as-a-Judge / RAGAS / DeepEval / TruLens / LangSmith / MS MARCO / BEIR |
-| 35 | [`35_security.ipynb`](35_security.ipynb) | Security / Prompt Injection / Data Security / Access Control / PII / Redaction / Guardrails / 合规 |
-| 36 | [`36_cache_latency.ipynb`](36_cache_latency.ipynb) | Cache / Semantic Cache / Latency / TTFT / Throughput / Cold Start / 优化清单 |
-| 37 | [`37_serving_observability.ipynb`](37_serving_observability.ipynb) | Serving / FastAPI 部署 / 观测 / Tracing / Logging / Metrics / CI-CD / 版本与回滚 |
+| 34 | [`34_retrieval_evaluation.ipynb`](34_retrieval_evaluation.ipynb) | Recall / Precision / Hit Rate / Recall@K / Precision@K / MRR / NDCG / MAP |
+| 35 | [`35_generation_evaluation.ipynb`](35_generation_evaluation.ipynb) | Faithfulness / Answer Relevance / Context Relevance / LLM-as-a-Judge / RAGAS / DeepEval / TruLens / LangSmith / MS MARCO / BEIR |
+| 36 | [`36_security.ipynb`](36_security.ipynb) | Security / Prompt Injection / Data Security / Access Control / PII / Redaction / Guardrails / 合规 |
+| 37 | [`37_cache_latency.ipynb`](37_cache_latency.ipynb) | Cache / Semantic Cache / Latency / TTFT / Throughput / Cold Start / 优化清单 |
+| 38 | [`38_serving_observability.ipynb`](38_serving_observability.ipynb) | Serving / FastAPI 部署 / 观测 / Tracing / Logging / Metrics / CI-CD / 版本与回滚 |
 
 ### 模块 H：微调 / 前沿模型 / 生产总览
 
 | # | 文件 | 覆盖知识点 |
 |---|------|-----------|
-| 38 | [`38_finetuning.ipynb`](38_finetuning.ipynb) | Embedding 微调 / Reranker 微调 / LLM 微调 / SFT / LoRA / RLHF / DPO / 合成数据 |
-| 39 | [`39_advanced_retrieval_models.ipynb`](39_advanced_retrieval_models.ipynb) | ColBERT / MaxSim / Late Interaction / SPLADE / 稀疏+稠密结合 / Long Context / Lost in the Middle |
-| 40 | [`40_production_rag.ipynb`](40_production_rag.ipynb) | Production RAG 全景 / 十模块总复习 / 端到端串联 / 上线检查清单 / 高频坑 / 演进路径 |
+| 39 | [`39_finetuning.ipynb`](39_finetuning.ipynb) | Embedding 微调 / Reranker 微调 / LLM 微调 / SFT / LoRA / RLHF / DPO / 合成数据 |
+| 40 | [`40_advanced_retrieval_models.ipynb`](40_advanced_retrieval_models.ipynb) | ColBERT / MaxSim / Late Interaction / SPLADE / 稀疏+稠密结合 / Long Context / Lost in the Middle |
+| 41 | [`41_production_rag.ipynb`](41_production_rag.ipynb) | Production RAG 全景 / 十模块总复习 / 端到端串联 / 上线检查清单 / 高频坑 / 演进路径 |
 
 ---
 
@@ -157,20 +157,20 @@ RagAll/
 ├── requirements.txt             # 依赖清单
 ├── .cache/                      # 向量缓存（真实调用的 embedding 落盘，重复运行不重复花 token）
 ├── data/                        # 示例知识库：一套「星云智能客服」的仿真语料
-│   ├── 星云智能产品手册.md      #   产品/部署/计费/安全    ← 04 05 07 15 33 40 主干检索
+│   ├── 星云智能产品手册.md      #   产品/部署/计费/安全    ← 04 05 07 15 34 41 主干检索
 │   ├── 星云客服FAQ.md           #   一问一答式客服语料    ← 18 19 20 24 查询改写
 │   ├── 部署与运维手册.md        #   环境要求/升级/排障    ← 23 24 25 上下文工程
 │   ├── API文档.md               #   接口/鉴权/错误码      ← 31 32 SQL/代码 RAG
 │   ├── 计费与SLA.md             #   版本价格/服务等级      ← 22 重排
 │   ├── 故障排查.md              #   常见故障与处置        ← 26 29 幻觉与 CRAG
 │   ├── 向量数据库.md            #   索引类型/选型          ← 06 13 14
-│   ├── 评测集.md                #   人工标注（问题→相关文档/小节），不进检索索引 ← 33 34 40
+│   ├── 评测集.md                #   人工标注（问题→相关文档/小节），不进检索索引 ← 34 35 41
 │   ├── 星云产品手册.pdf         #   由上面 md 生成的样例 PDF ← 05 PyMuPDF 真解析
 │   └── 样例工单.csv / 样例帮助中心.html / 样例知识库元数据.json   ← 04 多格式加载
-└── 01_llm_primer.ipynb … 40_production_rag.ipynb   # 40 个知识点 notebook
+└── 01_llm_primer.ipynb … 41_production_rag.ipynb   # 41 个知识点 notebook
 ```
 
-> 除第 33/34/40 课的人工标注评测集外，各课的检索、重排、生成都跑在同一套真实语料上：
+> 除第 34/35/41 课的人工标注评测集外，各课的检索、重排、生成都跑在同一套真实语料上：
 > `data/` → 真切分 → 真 embedding（`text-embedding-v3`）→ 真索引（FAISS + BM25）→ 真重排（`qwen3-rerank`）→ 真生成（`qwen-plus`）。
 > 没配 `.env` 时也不影响阅读：向量从 `.cache/` 读（真实调用的结果），需要现场调用的部分会打印历史录制结果。
 
@@ -178,7 +178,7 @@ RagAll/
 
 ## 五、学习建议
 
-- **动手优先**：改 chunk 大小、top-k、是否混合检索 / 重排，观察指标变化（配合第 33/34 课评估）；
+- **动手优先**：改 chunk 大小、top-k、是否混合检索 / 重排，观察指标变化（配合第 34/35 课评估）；
 - **先机制后封装**：前期用 `numpy`/`dashscope` 手写理解，生产化再上框架；
-- **带着“上亿文本怎么办”的视角学**：每一步都想想扩展性与评估（第 37/40 课收尾）；
-- **别跳级**：01→22 是主干必学；23→39 可按需选学（每课都能单独插回主干），最后回到 40 做总复习。
+- **带着“上亿文本怎么办”的视角学**：每一步都想想扩展性与评估（第 38/41 课收尾）；
+- **别跳级**：01→22 是主干必学；23→40 可按需选学（每课都能单独插回主干），最后回到 41 做总复习。
